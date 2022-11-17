@@ -1,0 +1,21 @@
+<div class="container flex flex-col items-center">
+  <header>
+    <h1 class="text-purple-600 text-"></h1>
+  </header>
+
+  <div class="container">
+    <div class="flex items-center mb-2">
+      <img class="w-9 h-9" src={Routes.static_path(@socket, "/assets/images/license.svg" )} alt="">
+      <span class="ml-2">Your license is currently for</span>
+      <strong class="mx-2"><%= @seats %></strong> seats.
+    </div>
+
+    <form phx-change="update">
+      <input name="seats" type="range" min="1" max="10" value={@seats} class="range range-primary" />
+    </form>
+
+    <div class="font-bold text-center text-4xl text-green-500">
+      <span> <%= Number.Currency.number_to_currency(@amount) %></span>
+    </div>
+  </div>
+</div>
