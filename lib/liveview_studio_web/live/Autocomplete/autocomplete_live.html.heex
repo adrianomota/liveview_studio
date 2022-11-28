@@ -1,0 +1,77 @@
+<div class="container flex flex-col items-center">
+  <header>
+    <h1 class="text-purple-600 text-2xl font-bold">Autocomplete</h1>
+  </header>
+
+  <div class="w-full mt-5 flex items-center justify-center space-x-10">
+  <!-- ZIPCODE -->
+    <form phx-submit="zip-search">
+
+        <div class="input-group">
+          <input name="zip" id="zip" type="text" placeholder="Zip Code" class="input input-bordered" value={@zip}
+            readonly={@loading} />
+          <%= if @loading do %>
+          <button class="btn btn-active btn-primary loading"></button>
+          <% else %>
+          <button class="btn btn-active btn-primary" type="submit">Search</button>
+          <% end %>
+        </div>
+
+    </form>
+
+    <!-- City -->
+    <form phx-submit="city-search" phx-change="suggest-city">
+
+        <div class="input-group">
+          <input name="city"
+                 id="city"
+                 type="text"
+                 placeholder="City"
+                 list="matches"
+                 value={@city}
+                 phx-debounce="1000"
+                 class="input input-bordered" v
+            readonly={@loading} />
+          <%= if @loading do %>
+          <button class="btn btn-active btn-primary loading"></button>
+          <% else %>
+          <button class="btn btn-active btn-primary" type="submit">Search</button>
+          <% end %>
+        </div>
+
+    </form>
+
+    <datalist id="matches">
+      <%= for match <- @matches do %>
+        <option value={match}><%= match %></option>
+      <% end %>
+    </datalist>
+
+  </div>
+
+  <%= for store <- @stores do %>
+  <div class="w-full mt-5">
+    <div class="flex item justify-between mx-3 my-3">
+      <div class="place">
+        <h2 class="card-title mb-2"><%= store.name %></h2>
+        <p class="flex">
+          <img class="mr-2 w-5 h-5" src={Routes.static_path(@socket, "/assets/images/location.svg" )}
+            alt="street location">
+          <%= store.street %>
+        </p>
+      </div>
+      <div class="status">
+        <%= if store.open do %>
+        <span class="badge badge-accent mb-2">opem</span>
+        <% else %>
+        <span class="badge badge-secondary mb-2">closed</span>
+        <% end %>
+        <p class="text-gray-500 flex">
+          <img class="mr-2" src={Routes.static_path(@socket, "/assets/images/phone.svg" )} alt="phone number">
+          <%= store.phone_number %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

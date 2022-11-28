@@ -1,12 +1,12 @@
 <div class="container flex flex-col items-center">
   <header>
-    <h1 class="text-purple-600 text-3xl">Front Porch Light</h1>
+    <h1 class="text-3xl text-purple-600">Front Porch Light  </h1>
   </header>
   <div class="py-8">
-    <div class="flex justify-between items-center ">
+    <div class="flex items-center justify-between">
       <button class="btn btn-primary" phx-click="more">More</button>
-      <div class="radial-progress text-primary mx-10" style={"--value:#{@brightness};"}><%= @brightness %>%</div>
-      <button class="btn btn-primary" phx-click="less">Less</button>
-    </div>
+      <div class="mx-10 radial-progress text-primary" style={"--value:#{@brightness};"}><%= @brightness %>%</div>
+        <button class="btn btn-primary" phx-click="less">Less</button>
+      </div>
   </div>
 </div>
