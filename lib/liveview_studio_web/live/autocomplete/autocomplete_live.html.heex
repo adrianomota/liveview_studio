@@ -55,7 +55,8 @@
       <div class="place">
         <h2 class="card-title mb-2"><%= store.name %></h2>
         <p class="flex">
-          <img class="mr-2 w-5 h-5" src={Routes.static_path(@socket, "/assets/images/location.svg" )}
+          <img class="mr-2 w-5 h-5"
+            src={Routes.static_path(@socket, "/assets/images/location.svg" )}
             alt="street location">
           <%= store.street %>
         </p>

@@ -1,6 +1,7 @@
 defmodule LiveviewStudio.MixProject do
   use Mix.Project
 
+
   def project do
     [
       app: :liveview_studio,
