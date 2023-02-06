@@ -11,6 +11,6 @@
   "dependencies": {
     "alpinejs": "^3.10.2",
     "daisyui": "^2.14.3",
-    "topbar": "^1.0.1"
+    "topbar": "^2.0.1"
   }
 }
